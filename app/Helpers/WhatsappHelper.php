@@ -47,13 +47,14 @@ class WhatsappHelper
             ->json();
     }
 
-    public static function sendFileUrl($apiKey, $number, $fileUrl, $caption)
+    public static function sendFileUrl($apiKey, $number, $fileUrl, $caption, $fileName = 'file.pdf')
     {
         return self::client()
             ->post(self::apiUrl() . "/send-file-url?instanceKey={$apiKey}", [
                 'number' => $number,
                 'fileUrl' => $fileUrl,
                 'caption' => $caption,
+                'fileName' => $fileName,
             ])
             ->json();
     }

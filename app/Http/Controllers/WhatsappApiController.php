@@ -92,8 +92,10 @@ class WhatsappApiController extends Controller
             $request->instanceKey,
             $request->number,
             $request->fileUrl,
-            $request->caption
+            $request->caption,
+            $request->fileName ?? null
         );
+
 
         return $response;
     }
@@ -116,5 +118,4 @@ class WhatsappApiController extends Controller
 
         return $response;
     }
-
 }
