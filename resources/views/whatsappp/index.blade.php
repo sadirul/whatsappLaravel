@@ -58,7 +58,9 @@
                                     <tr class="border-b hover:bg-gray-50">
                                         <td class="p-3">{{ $index + 1 }}</td>
                                         <td class="p-3">{{ $instance->instance_name }}</td>
-                                        <td class="p-3">{{ $instance->api_key }}</td>
+                                        <td class="p-3">
+                                            {{ substr($instance->api_key, 0, 3) . str_repeat('*', strlen($instance->api_key) - 6) . substr($instance->api_key, -3) }}
+                                        </td>
                                         <td class="p-3">{{ $instance->created_at->diffForHumans() }}</td>
                                         <td class="p-3 text-center">
                                             <a href="{{ route('whatsapp.instance.show', $instance->id) }}"
@@ -81,6 +83,20 @@
 
     @push('scripts')
         <script>
+            function Notification(message) {
+                // Show tooltip or notification
+                const tooltip = document.createElement('div');
+                tooltip.className = 'fixed top-10 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg';
+                tooltip.textContent = message;
+                document.body.appendChild(tooltip);
+
+                setTimeout(() => {
+                    document.body.removeChild(tooltip);
+                }, 2000);
+
+            }
+
+
             document.getElementById('instanceForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
 
@@ -98,9 +114,13 @@
 
                 const data = await response.json();
                 if (data.status === 'success') {
-                    alert('Instance Created: ' + data.data.api_key);
+                    Notification(data.message);
                     form.reset();
                     document.getElementById('instanceModal').classList.add('hidden');
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 2000);
+
                 } else {
                     alert('Failed to create instance');
                 }

@@ -4,7 +4,7 @@
             <button id="mobile-menu-button" class="text-gray-500 focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-            <span class="ml-3 font-semibold text-gray-800">Admin Panel</span>
+            <span class="ml-3 font-semibold text-gray-800">{{ '@'.auth()->user()->username }}</span>
         </div>
         <div class="flex items-center">
             <button class="text-gray-500 focus:outline-none">
