@@ -35,12 +35,12 @@
                 <ul class="flex space-x-8">
                     <li><a href="#features" class="text-gray-600 hover:text-green-500 font-medium transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-5px] after:left-0 after:bg-gradient-to-r after:from-green-500 after:to-green-700 after:transition-all after:duration-300 hover:after:w-full">Features</a></li>
                     <li><a href="#pricing" class="text-gray-600 hover:text-green-500 font-medium transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-5px] after:left-0 after:bg-gradient-to-r after:from-green-500 after:to-green-700 after:transition-all after:duration-300 hover:after:w-full">Pricing</a></li>
-                    <li><a href="#docs" class="text-gray-600 hover:text-green-500 font-medium transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-5px] after:left-0 after:bg-gradient-to-r after:from-green-500 after:to-green-700 after:transition-all after:duration-300 hover:after:w-full">Documentation</a></li>
+                    <li><a href="{{ route('doc') }}" target="_blank" class="text-gray-600 hover:text-green-500 font-medium transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-5px] after:left-0 after:bg-gradient-to-r after:from-green-500 after:to-green-700 after:transition-all after:duration-300 hover:after:w-full">Documentation</a></li>
                     <li><a href="#support" class="text-gray-600 hover:text-green-500 font-medium transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-5px] after:left-0 after:bg-gradient-to-r after:from-green-500 after:to-green-700 after:transition-all after:duration-300 hover:after:w-full">Support</a></li>
                 </ul>
                 <div class="flex space-x-4 ml-8">
-                    <a href="/login" class="px-6 py-2 rounded-full border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-green-500/30">Login</a>
-                    <a href="/signup" class="px-6 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold hover:translate-y-[-2px] transition-all duration-300 hover:shadow-lg hover:shadow-green-500/40">Sign Up</a>
+                    <a href="{{ route('login') }}" class="px-6 py-2 rounded-full border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-green-500/30">Login</a>
+                    <a href="{{ route('signup') }}" class="px-6 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold hover:translate-y-[-2px] transition-all duration-300 hover:shadow-lg hover:shadow-green-500/40">Sign Up</a>
                 </div>
             </div>
             
@@ -54,12 +54,12 @@
                 <ul class="flex flex-col items-center space-y-8">
                     <li><a href="#features" class="text-2xl text-gray-600 hover:text-green-500 font-medium transition-colors duration-300">Features</a></li>
                     <li><a href="#pricing" class="text-2xl text-gray-600 hover:text-green-500 font-medium transition-colors duration-300">Pricing</a></li>
-                    <li><a href="#docs" class="text-2xl text-gray-600 hover:text-green-500 font-medium transition-colors duration-300">Documentation</a></li>
+                    <li><a href="{{ route('doc') }}" target="_blank" class="text-2xl text-gray-600 hover:text-green-500 font-medium transition-colors duration-300">Documentation</a></li>
                     <li><a href="#support" class="text-2xl text-gray-600 hover:text-green-500 font-medium transition-colors duration-300">Support</a></li>
                 </ul>
                 <div class="flex flex-col space-y-4 mt-8 w-3/4 max-w-xs">
-                    <a href="/login" class="px-6 py-3 rounded-full border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 text-center">Login</a>
-                    <a href="/signup" class="px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold hover:translate-y-[-2px] transition-all duration-300 text-center">Sign Up</a>
+                    <a href="{{ route('login') }}" class="px-6 py-3 rounded-full border-2 border-green-500 text-green-500 font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 text-center">Login</a>
+                    <a href="{{ route('signup') }}" class="px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold hover:translate-y-[-2px] transition-all duration-300 text-center">Sign Up</a>
                 </div>
             </div>
         </nav>
@@ -232,8 +232,8 @@
                     <ul class="space-y-2">
                         <li><a href="#features" class="text-gray-400 hover:text-green-500 transition-colors duration-300">Features</a></li>
                         <li><a href="#pricing" class="text-gray-400 hover:text-green-500 transition-colors duration-300">Pricing</a></li>
-                        <li><a href="#docs" class="text-gray-400 hover:text-green-500 transition-colors duration-300">Documentation</a></li>
-                        <li><a href="#docs" class="text-gray-400 hover:text-green-500 transition-colors duration-300">API Reference</a></li>
+                        <li><a href="{{ route('doc') }}" target="_blank" class="text-gray-400 hover:text-green-500 transition-colors duration-300">Documentation</a></li>
+                        <li><a href="{{ route('doc') }}" target="_blank" class="text-gray-400 hover:text-green-500 transition-colors duration-300">API Reference</a></li>
                     </ul>
                 </div>
                 <div>

@@ -8,35 +8,37 @@
             <div class="bg-white rounded-lg shadow p-6 mb-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">WhatsApp Instance Details</h2>
 
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid md:grid-cols-2 gap-6 w-full">
+
                     <!-- Instance Info -->
-                    <div>
+                    <div class="w-full overflow-x-auto">
+
                         <p class="text-gray-600"><strong>Instance Name:</strong> {{ $instance->instance_name }}</p>
                         <div class="text-gray-600 mt-2 flex items-center">
-                            <strong>API Key:</strong> 
-                            <span class="text-sm bg-gray-100 px-2 py-1 rounded ml-2" id="api-key-display">
+                            <strong>API Key:</strong>
+                            <span class="text-sm bg-gray-100 px-2 py-1 rounded ml-2 break-all inline-block max-w-full"
+                                id="api-key-display">
                                 {{ substr($instance->api_key, 0, 3) . str_repeat('*', strlen($instance->api_key) - 6) . substr($instance->api_key, -3) }}
                             </span>
-                            <button 
-                                onclick="copyToClipboard('{{ $instance->api_key }}')" 
-                                class="ml-2 text-blue-600 hover:text-blue-800"
-                                title="Copy to clipboard"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                            <button onclick="copyToClipboard('{{ $instance->api_key }}')"
+                                class="ml-2 text-blue-600 hover:text-blue-800" title="Copy to clipboard">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                                 </svg>
                             </button>
                         </div>
                         <p class="text-gray-600 mt-2"><strong>Created At:</strong>
                             {{ $instance->created_at->format('d M, Y h:i A') }}</p>
 
-                        <p class="text-gray-600 mt-2"> <span class="text-sm bg-gray-100 px-2 py-1 rounded"><a target="_blank"
-                                    href="{{ route('doc', ['api-key' => $instance->api_key]) }}">View
+                        <p class="text-gray-600 mt-2"> <span class="text-sm bg-gray-100 px-2 py-1 rounded"><a
+                                    target="_blank" href="{{ route('doc', ['api-key' => $instance->api_key]) }}">View
                                     Documentation</a></span></p>
-                        
+
                         <!-- Connection Status -->
                         <div class="mt-4">
-                            <p class="text-gray-600"><strong>Status:</strong> 
+                            <p class="text-gray-600"><strong>Status:</strong>
                                 <span id="connection-status" class="px-2 py-1 rounded text-sm">
                                     <span class="text-yellow-600">🔄 Checking...</span>
                                 </span>
@@ -46,7 +48,8 @@
 
                     <!-- QR Code Placeholder -->
                     <div id="qr-box"
-                        class="flex flex-col items-center justify-center border border-dashed border-gray-300 rounded p-6 bg-gray-50 space-y-4">
+                        class="w-full flex flex-col items-center justify-center border border-dashed border-gray-300 rounded p-6 bg-gray-50 space-y-4">
+
                         <div class="flex items-center space-x-2">
                             <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
                             <p class="text-gray-400">Initializing WhatsApp session...</p>
@@ -78,7 +81,7 @@
                 tooltip.className = 'fixed top-10 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg';
                 tooltip.textContent = 'Copied to clipboard!';
                 document.body.appendChild(tooltip);
-                
+
                 setTimeout(() => {
                     document.body.removeChild(tooltip);
                 }, 2000);
@@ -99,11 +102,11 @@
 
             function initializeSession() {
                 updateStatus('🔄 Starting session...', 'text-yellow-600');
-                
+
                 $.get(`/api/whatsapp/start-session?instanceKey=${instanceKey}`)
                     .done(function(response) {
                         console.log('✅ Start Session Response:', response);
-                        
+
                         if (response.success) {
                             if (response.connected) {
                                 showConnectedState();
@@ -124,7 +127,7 @@
             function startQRPolling() {
                 // Clear any existing interval
                 if (qrCheckInterval) clearInterval(qrCheckInterval);
-                
+
                 // Start polling for QR code
                 fetchQRCode();
                 qrCheckInterval = setInterval(fetchQRCode, 3000); // Check every 3 seconds
@@ -190,7 +193,7 @@
             function showConnectedState() {
                 clearInterval(qrCheckInterval);
                 updateStatus('✅ Connected to WhatsApp', 'text-green-600');
-                
+
                 $('#qr-box').html(`
                     <div class="text-center space-y-4">
                         <div class="text-green-600 text-6xl">✅</div>
@@ -201,7 +204,7 @@
                         </button>
                     </div>
                 `);
-                
+
                 bindLogoutEvent();
                 startConnectionMonitoring();
             }
@@ -267,11 +270,11 @@
                 $('#logout-btn').on('click', function() {
                     const button = $(this);
                     button.prop('disabled', true).html('🔄 Logging out...');
-                    
+
                     $.get(`/api/whatsapp/logout?instanceKey=${instanceKey}`)
                         .done(function(response) {
                             console.log('🔌 Logout response:', response);
-                            
+
                             if (response.status === 'success') {
                                 updateStatus('🔌 Logged out successfully', 'text-gray-600');
                                 setTimeout(() => {
