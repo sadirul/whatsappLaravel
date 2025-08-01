@@ -1,3 +1,7 @@
+@php
+    $instanceKey = request()->has('api-key') ? request('api-key') : 'your-instance-key-123';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -316,7 +320,7 @@
             <div class="main-content">
                 <div class="base-url">
                     <div class="base-url-title">Base URL</div>
-                    <div class="base-url-text">https://your-domain.com/api</div>
+                    <div class="base-url-text">{{ env('APP_URL') }}/api</div>
                 </div>
 
                 <!-- Start Session -->
@@ -325,7 +329,7 @@
                         <div class="endpoint-title">Start WhatsApp Session</div>
                         <div>
                             <span class="endpoint-method">GET</span>
-                            <span class="endpoint-url">/whatsapp/start-session?instanceKey=your-key</span>
+                            <span class="endpoint-url">/whatsapp/start-session?instanceKey={{ $instanceKey }}</span>
                         </div>
                     </div>
                     <div class="endpoint-body">
@@ -348,7 +352,7 @@
                                 <span class="curl-title">cURL Request</span>
                                 <button class="copy-btn" onclick="copyToClipboard('start-session-curl')">Copy</button>
                             </div>
-                            <code class="curl-code" id="start-session-curl">curl -X GET "https://your-domain.com/api/whatsapp/start-session?instanceKey=your-instance-key-123" \
+                            <code class="curl-code" id="start-session-curl">curl -X GET "{{ env('APP_URL') }}/api/whatsapp/start-session?instanceKey={{ $instanceKey }}" \
   -H "Accept: application/json"</code>
                         </div>
 
@@ -358,7 +362,7 @@
   "success": true,
   "message": "Session started successfully",
   "data": {
-    "instanceKey": "your-instance-key-123",
+    "instanceKey": "{{ $instanceKey }}",
     "status": "starting"
   }
 }</div>
@@ -395,7 +399,7 @@
                                 <span class="curl-title">cURL Request</span>
                                 <button class="copy-btn" onclick="copyToClipboard('get-qr-curl')">Copy</button>
                             </div>
-                            <code class="curl-code" id="get-qr-curl">curl -X GET "https://your-domain.com/api/whatsapp/get-qr?instanceKey=your-instance-key-123" \
+                            <code class="curl-code" id="get-qr-curl">curl -X GET "{{ env('APP_URL') }}/api/whatsapp/get-qr?instanceKey={{ $instanceKey }}" \
   -H "Accept: application/json"</code>
                         </div>
 
@@ -406,7 +410,7 @@
   "message": "QR code generated successfully",
   "data": {
     "qrCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
-    "instanceKey": "your-instance-key-123"
+    "instanceKey": "{{ $instanceKey }}"
   }
 }</div>
                         </div>
@@ -458,7 +462,7 @@
                                 <span class="curl-title">cURL Request</span>
                                 <button class="copy-btn" onclick="copyToClipboard('send-message-curl')">Copy</button>
                             </div>
-                            <code class="curl-code" id="send-message-curl">curl -X POST "https://your-domain.com/api/whatsapp/send-message?instanceKey=your-instance-key-123" \
+                            <code class="curl-code" id="send-message-curl">curl -X POST "{{ env('APP_URL') }}/api/whatsapp/send-message?instanceKey={{ $instanceKey }}" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -526,6 +530,12 @@
                                 <span class="param-optional">optional</span>
                                 <div class="param-description">Caption text to accompany the file</div>
                             </div>
+                            <div class="param">
+                                <span class="param-name">fileName</span>
+                                <span class="param-type">string</span>
+                                <span class="param-optional">optional</span>
+                                <div class="param-description">Name of the file (invoice.pdf)</div>
+                            </div>
                         </div>
 
                         <div class="curl-container">
@@ -533,7 +543,7 @@
                                 <span class="curl-title">cURL Request</span>
                                 <button class="copy-btn" onclick="copyToClipboard('send-file-curl')">Copy</button>
                             </div>
-                            <code class="curl-code" id="send-file-curl">curl -X POST "https://your-domain.com/api/whatsapp/send-file?instanceKey=your-instance-key-123" \
+                            <code class="curl-code" id="send-file-curl">curl -X POST "{{ env('APP_URL') }}/api/whatsapp/send-file?instanceKey={{ $instanceKey }}" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -588,7 +598,7 @@
                                 <span class="curl-title">cURL Request</span>
                                 <button class="copy-btn" onclick="copyToClipboard('logout-curl')">Copy</button>
                             </div>
-                            <code class="curl-code" id="logout-curl">curl -X GET "https://your-domain.com/api/whatsapp/logout?instanceKey=your-instance-key-123" \
+                            <code class="curl-code" id="logout-curl">curl -X GET "{{ env('APP_URL') }}/api/whatsapp/logout?instanceKey={{ $instanceKey }}" \
   -H "Accept: application/json"</code>
                         </div>
 
@@ -598,7 +608,7 @@
   "success": true,
   "message": "Logged out successfully",
   "data": {
-    "instanceKey": "your-instance-key-123",
+    "instanceKey": "{{ $instanceKey }}",
     "status": "disconnected"
   }
 }</div>

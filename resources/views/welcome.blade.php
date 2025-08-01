@@ -573,7 +573,7 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#docs">Documentation</a></li>
+                <li><a href="doc">Documentation</a></li>
                 <li><a href="#support">Support</a></li>
             </ul>
             <div class="auth-buttons">
@@ -591,8 +591,8 @@
                 <h1 class="hero-title fade-in-up">Connect Your Business to WhatsApp</h1>
                 <p class="hero-subtitle fade-in-up">Send messages, share files, and automate conversations with our powerful WhatsApp API. Scale your communication effortlessly.</p>
                 <div class="hero-cta fade-in-up">
-                    <a href="#signup" class="btn btn-primary btn-hero">Get Started Free</a>
-                    <a href="#docs" class="btn btn-outline btn-hero">View Documentation</a>
+                    <a href="signup" class="btn btn-primary btn-hero">Get Started Free</a>
+                    <a href="doc" class="btn btn-outline btn-hero">View Documentation</a>
                 </div>
                 <div class="hero-stats fade-in-up">
                     <div class="stat">
@@ -732,8 +732,8 @@
                 <h2 class="cta-title">Ready to Get Started?</h2>
                 <p class="cta-subtitle">Join thousands of developers who trust our WhatsApp API for their business communication needs.</p>
                 <div class="hero-cta">
-                    <a href="#signup" class="btn btn-primary btn-hero">Start Free Trial</a>
-                    <a href="#docs" class="btn btn-outline btn-hero">Read Documentation</a>
+                    <a href="signup" class="btn btn-primary btn-hero">Start Free Trial</a>
+                    <a href="doc" class="btn btn-outline btn-hero">Read Documentation</a>
                 </div>
             </div>
         </div>

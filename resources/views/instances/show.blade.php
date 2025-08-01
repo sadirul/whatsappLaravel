@@ -16,6 +16,10 @@
                                 class="text-sm bg-gray-100 px-2 py-1 rounded">{{ $instance->api_key }}</span></p>
                         <p class="text-gray-600 mt-2"><strong>Created At:</strong>
                             {{ $instance->created_at->format('d M, Y h:i A') }}</p>
+
+                        <p class="text-gray-600 mt-2"> <span class="text-sm bg-gray-100 px-2 py-1 rounded"><a target="_blank"
+                                    href="{{ route('doc', ['api-key' => $instance->api_key]) }}">View
+                                    Documentation</a></span></p>
                     </div>
 
                     <!-- QR Code Placeholder -->
@@ -80,13 +84,13 @@
                     } else {
                         $('#qr-box').html(
                             `<p class="text-red-600 font-semibold">❌ QR expired or not available. Please refresh to retry.</p>`
-                            )
+                        )
                     }
                 }).fail(function(err) {
                     console.error('QR fetch error', err)
                     $('#qr-box').html(
                         `<p class="text-red-600 font-semibold">❌ Failed to load QR code. Try again later.</p>`
-                        )
+                    )
                 })
             }
 
