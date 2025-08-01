@@ -376,7 +376,7 @@
                         <div class="endpoint-title">Get QR Code</div>
                         <div>
                             <span class="endpoint-method">GET</span>
-                            <span class="endpoint-url">/whatsapp/get-qr?instanceKey=your-key</span>
+                            <span class="endpoint-url">/whatsapp/get-qr?instanceKey={{ $instanceKey }}</span>
                         </div>
                     </div>
                     <div class="endpoint-body">
@@ -423,7 +423,7 @@
                         <div class="endpoint-title">Send Text Message</div>
                         <div>
                             <span class="endpoint-method">POST</span>
-                            <span class="endpoint-url">/whatsapp/send-message?instanceKey=your-key</span>
+                            <span class="endpoint-url">/whatsapp/send-message?instanceKey={{ $instanceKey }}</span>
                         </div>
                     </div>
                     <div class="endpoint-body">
@@ -492,7 +492,7 @@
                         <div class="endpoint-title">Send File</div>
                         <div>
                             <span class="endpoint-method">POST</span>
-                            <span class="endpoint-url">/whatsapp/send-file?instanceKey=your-key</span>
+                            <span class="endpoint-url">/whatsapp/send-file?instanceKey={{ $instanceKey }}</span>
                         </div>
                     </div>
                     <div class="endpoint-body">
@@ -575,7 +575,7 @@
                         <div class="endpoint-title">Logout Session</div>
                         <div>
                             <span class="endpoint-method">GET</span>
-                            <span class="endpoint-url">/whatsapp/logout?instanceKey=your-key</span>
+                            <span class="endpoint-url">/whatsapp/logout?instanceKey={{ $instanceKey }}</span>
                         </div>
                     </div>
                     <div class="endpoint-body">
