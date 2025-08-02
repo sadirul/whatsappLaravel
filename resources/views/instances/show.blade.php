@@ -206,7 +206,6 @@
                 `);
 
                 bindLogoutEvent();
-                startConnectionMonitoring();
             }
 
             function showError(message) {
@@ -246,24 +245,6 @@
 
             function updateStatus(text, colorClass) {
                 $('#connection-status').html(`<span class="${colorClass}">${text}</span>`);
-            }
-
-            function startConnectionMonitoring() {
-                // Check connection status every 30 seconds
-                connectionCheckInterval = setInterval(function() {
-                    $.get(`/api/whatsapp/status?instanceKey=${instanceKey}`)
-                        .done(function(response) {
-                            if (response.success && !response.connected) {
-                                // Connection lost, restart session
-                                console.log('🔌 Connection lost, restarting...');
-                                clearInterval(connectionCheckInterval);
-                                location.reload();
-                            }
-                        })
-                        .fail(function() {
-                            console.log('⚠️ Status check failed');
-                        });
-                }, 30000);
             }
 
             function bindLogoutEvent() {
